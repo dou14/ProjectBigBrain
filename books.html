@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1" />
+    <title>Confetti Cuisine</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/confetti_cuisine.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> 
+    
+<style>
+.title
+{
+    color:white;
+    background-color: #2F2827;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: small;
+    padding: .2em;
+    margin-left: .5em;
+    margin-bottom: .1em;
+    float: right;
+    text-align: left;
+   width: 30%;
+   font-weight: bold;
+   font-variant: small-caps;
+   text-align:right;
+}
+.left
+{
+	float: left;
+	width: auto;
+	margin-right: 10px;
+}
+#content
+{ 
+  text-align: left;
+  width: 550px;
+  padding: 0;
+}
+</style>
+
+<script src="js/cookiemanager.js" ></script> 
+<script src="js/validation.js"></script>
+<script src="js/catalog.js" ></script>
+
+<script>
+  function addItem2Cart(y)
+  {
+   let cart=new ShoppingCart(getCookie('whoami'));
+   cart.addItem(y.name);
+   alert(y.name + "Added to cart ...");
+  }
+</script>
+
+<!--------------------05----------------------->
+<script>
+  function loadsolopage(x)
+  {
+    setCookie("page",x,1);
+    window.location.href = "solopage.html";
+  }
+ </script>
+<!--------------------05----------------------->
+
+  </head>
+
+  <body>
+
+      
+    <div id="nav" style="background:green;color:white;">
+      <div class="col-sm nav-align">
+        <a href="#" class="logo"><i class="fas fa-book fa-3x"></i></a>
+        <h1 id="title">Motivational Book Store</h1>
+      </div>
+      <div class="col-sm nav-align">
+        
+        <script src="js/menu.js"></script> 
+
+      </div>
+    </div>
+<!--
+    <input type="button" value="addToCart"
+	
+    onclick="let x2=new ShoppingCart(getCookie('whoami'));;x2.addItem('sony');alert('SONY TV Added to cart ...');"
+  
+  />
+-->
+     <center> 
+        
+            <div id="content">
+            <!-- ----------------------------------------------------------------------------------- -->
+              <script>
+                
+                let x=new Catalog();
+                
+                
+                let items=x.getBooks();
+                for(let i=0;i<items.length;i++)
+                {
+                  
+                document.writeln
+                (`
+                <div style="border:solid green 1px;background:#FFFFFF;float:left">
+                <div class="title">${items[i].name}</div>
+                <span class="left"><a href="#" onclick="loadsolopage('${items[i].code}');"><img src="${items[i].image}" style="width:200px;" alt="example graphic" /></a></span>
+                <p>
+                ${items[i].description} <a href="${items[i].code}.html">More...</a><br />
+                <span style="float:right;text-align:left;padding:.5em;">
+                <a href="#" onclick="addItem2Cart(this);">Add to Cart</a>&nbsp;&nbsp;<a href="cart.html">Goto Cart</a>
+                </span>
+                </p>
+                </div>
+                
+                <p style="clear:both"></p>
+                
+                `);
+                
+                }
+                
+                </script>
+              
+            <!------------------------------------------------------------------------------------------> 
+            </div>
+              
+              </center>    
+  </body>
+</html>

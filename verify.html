@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1" />
+    <title>Confetti Cuisine</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/confetti_cuisine.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">  
+    <title>Upload Media</title>  
+    <style>
+    		#content
+  { 
+  width: 500px;
+  padding: 0;}
+    </style>
+  </head>
+  <body>
+    
+    <div id="nav" style="background:green;color:white;">
+      <div class="col-sm nav-align">
+        <a href="#" class="logo"><i class="fas fa-book fa-3x"></i></a>
+        <h1 id="title">Motivational Book Store</h1>
+      </div>
+        <div class="col-sm nav-align">
+        
+        <a href='logoff.html'><span class='button'>Logoff</span></a>
+        <a href="books.html"> <span class="button">Books</span> </a>
+        <a href="verify.html"> <span class="button">Verify</span> </a>
+        <a href="reward.html"> <span class="button">Reward</span> </a>
+        <a href="contact.html"> <span class="button">Contact</span> </a>
+        <a href="about.html"> <span class="button">About</span> </a>
+        <a href="cart.html"> <i class="fas fa-shopping-cart"></i> </a>
+      </div>
+    </div>
+    
+    <div class="centered-text">
+      <h1>Below is a the template of the verification page:</h1>
+    </div>    <div class="wrapper">
+      <div class="box">
+        <div class="input-bx">
+          <h2 class="upload-area-title">Upload Media</h2>
+          <form>
+            <input type="file" id="upload" accept="image/*, video/*, audio/*" style="display: none;">
+            <label for="upload" class="uploadlabel">
+              <span><i class="fas fa-cloud-upload-alt"></i></span>
+              <p>Click To Upload</p>
+            </label>
+          </form>
+        </div>
+        <div id="filewrapper">
+          <h3 class="upload">Uploaded Media</h3>
+          <div id="media-container"></div>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+     const input = document.getElementById('upload');
+const mediaContainer = document.getElementById('media-container');
+
+input.addEventListener('change', handleFileUpload);
+
+function handleFileUpload(e) {
+  const file = e.target.files[0];
+  const fileType = file.type.split('/')[0];
+
+  const reader = new FileReader();
+  reader.onload = function (event) {
+    const mediaItem = document.createElement('div');
+    mediaItem.classList.add('media-item');
+
+    if (fileType === 'image') {
+      const img = document.createElement('img');
+      img.src = event.target.result;
+      mediaItem.appendChild(img);
+    } else if (fileType === 'video') {
+      const video = document.createElement('video');
+      video.src = event.target.result;
+      video.controls = true;
+      mediaItem.appendChild(video);
+    } else if (fileType === 'audio') {
+      const audio = document.createElement('audio');
+      audio.src = event.target.result;
+      audio.controls = true;
+      mediaItem.appendChild(audio);
+    }
+
+    const deleteButton = createDeleteButton(mediaItem);
+    mediaItem.appendChild(deleteButton);
+
+    mediaContainer.appendChild(mediaItem);
+  };
+
+  reader.readAsDataURL(file);
+}
+
+function createDeleteButton(mediaItem) {
+  const deleteButton = document.createElement('button');
+  deleteButton.classList.add('delete-button');
+  deleteButton.innerHTML = 'Delete';
+
+  deleteButton.addEventListener('click', function () {
+    mediaContainer.removeChild(mediaItem);
+  });
+
+  return deleteButton;
+}
+    </script>
+  </body>
+</html>

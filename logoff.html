@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      
+    <script src="js/cookiemanager.js" ></script>
+    <script src="js/validation.js"></script>
+    <script>
+   function logoff()
+   {
+   setCookie("flag","",-1);
+   setCookie("whoami","",-1);
+   location.href="login.html";
+   }
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1" /> 
+    <title>Confetti Cuisine</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/confetti_cuisine.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">    
+
+    <style type="text/css">
+		#content
+{ text-align: left;
+  width: 500px;
+  padding: 0;}
+	.form_settings
+{ margin: 15px 0 0 0;}
+
+.form_settings p
+{ padding: 0 0 0px 0;}
+
+.form_settings span
+{ float: left; 
+  width: 200px; 
+  text-align: left;}
+  
+.form_settings input, .form_settings textarea
+{ padding: 5px; 
+  width: 299px; 
+  font: 100% arial; 
+  border: 1px solid #E5E5DB; 
+  background: #FFF; 
+  color: #47433F;}
+  
+.form_settings .submit
+{ font: 100% arial; 
+  border: 2px; 
+  width: 99px; 
+  margin: 1 1 1 1;  
+  height: 33px;
+  padding: 2px 0 3px 0;
+  cursor: pointer; 
+  background: #3B3B3B; 
+  color: #FFF;}
+
+.form_settings textarea, .form_settings select
+{ font: 100% arial; 
+  width: 299px;}
+
+.form_settings select
+{ width: 310px;}
+
+.form_settings .checkbox
+{ margin: 4px 0; 
+  padding: 0; 
+  width: 14px;
+  border: 0;
+  background: none;}
+</style>
+  </head>
+  <body>
+    <div id="nav" style="background:green;color:white;">
+      <div class="col-sm nav-align">
+        <a href="#" class="logo"><i class="fas fa-book fa-3x"></i></a>
+        <h1 id="title">Motivational Book Store</h1>
+      </div>
+      <div class="col-sm nav-align">
+
+        <script src="js/menu.js"></script>
+
+      </div>
+    </div>
+<center>
+    <div id="content">
+        <div style="text-align: left; padding: 0;">
+            <div id="content">
+                <h1 style="font: normal 179% 'century gothic', arial, sans-serif;color: #43423F;margin: 0 0 15px 0;padding: 15px 0 5px 0;" >Login</h1>
+                
+                <form>
+                    <center>
+                    <input type="button" value="Logoff" onclick="logoff()">
+                    </center>
+                </form>
+
+                </div>
+      </div>
+    </center>
+  </body>
+</html>
